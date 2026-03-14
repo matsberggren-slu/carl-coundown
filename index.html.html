@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nedräkning till Världsungdomsspelen</title>
+  <style>
+    :root {
+      --bg1: #0b1220;
+      --bg2: #111827;
+      --card: rgba(255, 255, 255, 0.08);
+      --line: rgba(255, 255, 255, 0.14);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --accent: #fbbf24;
+      --accent-2: #60a5fa;
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(96, 165, 250, 0.18), transparent 35%),
+        radial-gradient(circle at top right, rgba(251, 191, 36, 0.16), transparent 30%),
+        linear-gradient(160deg, var(--bg1), var(--bg2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .app {
+      width: min(980px, 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.04));
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      backdrop-filter: blur(12px);
+    }
+
+    .hero {
+      padding: 32px 24px 20px;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1.05;
+    }
+
+    .sub {
+      margin: 14px auto 0;
+      max-width: 740px;
+      font-size: clamp(16px, 2.3vw, 20px);
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .logos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding: 24px;
+    }
+
+    .logo-box {
+      min-height: 120px;
+      border: 1px dashed rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.04);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--muted);
+      font-weight: 700;
+      padding: 12px;
+    }
+
+    .logo-box img {
+      max-width: 100%;
+      max-height: 90px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .content {
+      padding: 8px 24px 32px;
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 12px 0 22px;
+    }
+
+    .time-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px 14px;
+      text-align: center;
+    }
+
+    .value {
+      font-size: clamp(34px, 6vw, 64px);
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .label {
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .message-card {
+      background: linear-gradient(180deg, rgba(251,191,36,0.14), rgba(96,165,250,0.08));
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .message-title {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .message {
+      font-size: clamp(22px, 3vw, 34px);
+      line-height: 1.3;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .footer {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 760px) {
+      .logos,
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      body { padding: 12px; }
+      .hero { padding: 24px 18px 18px; }
+      .logos,
+      .content { padding-left: 18px; padding-right: 18px; }
+      .logos,
+      .countdown { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="hero">
+      <div class="eyebrow">Målet i sikte</div>
+      <h1>Nedräkning till Världsungdomsspelen</h1>
+      <p class="sub">
+        Släggan avgörs lördag 27 juni 2026 kl. 14:00. Varje dag är ett steg närmare ögonblicket.
+      </p>
+    </section>
+
+    <section class="logos">
+      <div class="logo-box" id="logo-vu">
+        Lägg in Världsungdomsspelens logga här
+      </div>
+      <div class="logo-box" id="logo-sfif">
+        Lägg in Svensk Friidrotts logga här
+      </div>
+      <div class="logo-box" id="logo-rieti">
+        Lägg in ungdoms-EM i Rieti här
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="countdown">
+        <div class="time-card">
+          <div class="value" id="days">0</div>
+          <div class="label">Dagar</div>
+        </div>
+        <div class="time-card">
+          <div class="value" id="hours">0</div>
+          <div class="label">Timmar</div>
+        </div>
+        <div class="time-card">
+          <div class="value" id="minutes">0</div>
+          <div class="label">Minuter</div>
+        </div>
+        <div class="time-card">
+          <div class="value" id="seconds">0</div>
+          <div class="label">Sekunder</div>
+        </div>
+      </div>
+
+      <div class="message-card">
+        <div class="message-title">Dagens ord</div>
+        <p class="message" id="dailyMessage"></p>
+      </div>
+
+      <div class="footer" id="statusText">
+        Siktet är inställt. Timern räknar ned till tävlingsstart.
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const targetDate = new Date('2026-06-27T14:00:00+02:00');
+
+    const messages = [
+      'Pannben slår tvivel.',
+      'Varje kast före målet räknas.',
+      'Styrka är vilja som blivit vana.',
+      'När det bränner, fortsätt ändå.',
+      'Det stora byggs av det lilla, varje dag.',
+      'Mod är att gå först när benen känns tunga.',
+      'Träning utan riktning är bara trötthet. Du har riktning.',
+      'Ingen meter kommer gratis. Bra. Då förtjänas den.',
+      'Tryck när andra tvekar.',
+      'Viljan ska synas i fötterna, bålen och blicken.',
+      'Det är långt till toppen för den som stannar.',
+      'Lugn i huvudet. Eld i kroppen.',
+      'Var konsekvent. Det är där styrkan bor.',
+      'Du tränar inte för att hoppas. Du tränar för att vara redo.',
+      'En dag mindre kvar. En dag bättre måste du bli.',
+      'Fokus slår brus.',
+      'Det som känns tungt nu blir ditt vapen sen.',
+      'Håll linjen. Håll farten. Håll modet.',
+      'Du behöver inte vara perfekt. Du behöver vara orubblig.',
+      'När stunden kommer ska kroppen känna igen jobbet.',
+      'Tryck i marken. Tro på kastet.',
+      'Det finns alltid en växel till.',
+      'Ditt mål bryr sig inte om ursäkter.',
+      'Ingen ser alla passen. Resultatet gör det.',
+      'Det här är vägen. Gå den hela vägen ut.',
+      'Stå kvar i arbetet när det blir obekvämt.',
+      'Kraft utan disciplin är bara oväsen.',
+      'Låt varje dag säga: jag menar allvar.',
+      'Lita på träningen. Lita på dig själv.',
+      'Pannben byggs före medaljer.'
+    ];
+
+    function dayIndex() {
+      const now = new Date();
+      const startOfYear = new Date(now.getFullYear(), 0, 0);
+      const diff = now - startOfYear;
+      const oneDay = 1000 * 60 * 60 * 24;
+      return Math.floor(diff / oneDay);
+    }
+
+    function setDailyMessage() {
+      const message = messages[dayIndex() % messages.length];
+      document.getElementById('dailyMessage').textContent = message;
+    }
+
+    function pad(num) {
+      return String(num).padStart(2, '0');
+    }
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+      const statusText = document.getElementById('statusText');
+
+      if (diff <= 0) {
+        document.getElementById('days').textContent = '0';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        statusText.textContent = 'Nu är det dags. Släggan avgörs idag.';
+        return;
+      }
+
+      const totalSeconds = Math.floor(diff / 1000);
+      const days = Math.floor(totalSeconds / (60 * 60 * 24));
+      const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+      const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+      const seconds = totalSeconds % 60;
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = pad(hours);
+      document.getElementById('minutes').textContent = pad(minutes);
+      document.getElementById('seconds').textContent = pad(seconds);
+      statusText.textContent = 'Målet närmar sig för varje sekund. Jobbet görs nu.';
+    }
+
+    function attachLogo(containerId, filename, altText) {
+      const container = document.getElementById(containerId);
+      const img = new Image();
+      img.src = filename;
+      img.alt = altText;
+
+      img.onload = () => {
+        container.innerHTML = '';
+        container.appendChild(img);
+      };
+    }
+
+    // Loggor
+    attachLogo('logo-vu', 'vu.webp', 'Världsungdomsspelen');
+    attachLogo('logo-sfif', 'svfif.png', 'Svensk Friidrott');
+    attachLogo('logo-rieti', 'rieti.avif', 'Ungdoms-EM Rieti 2026');
+
+    setDailyMessage();
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
